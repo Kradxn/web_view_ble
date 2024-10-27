@@ -202,10 +202,10 @@ class BleWebNavigator {
     controller.addJavaScriptHandler(
       handlerName: _connectDevice,
       callback: (args) async {
-        if (args.isEmpty || args[0].data == null || args[0].data!['deviceId'] == null) {
+        if (args.isEmpty || args.data == null || args.data!['deviceId'] == null) {
           return {"error": "InvalidArgs"};
         }
-        var deviceId = args[0].data!['deviceId'];
+        var deviceId = args.data!['deviceId'];
 
         return await bleService.connect(deviceId: deviceId);
       },
