@@ -207,7 +207,8 @@ class BleWebNavigator {
         }
         var deviceId = args.data!['deviceId'];
 
-        return await bleService.connect(deviceId: deviceId);
+        await bleService.connect(deviceId: deviceId);
+        return WebBleDevice(deviceId, "N/A");
       },
     );
   }
