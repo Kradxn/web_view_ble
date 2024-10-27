@@ -226,8 +226,9 @@ class BleManager {
         await UniversalBle.discoverServices(deviceId);
   }
 
-  Future<List<BleDevice>> getDevices() async {
-    return await UniversalBle.getSystemDevices();
+  Future<List<WebBleDevice>> getDevices() async {
+    List<BleDevice> devices = await UniversalBle.getDevices();
+    return devices.map((e) => WebBleDevice.fromBleDevice(e)).toList();
   }
 }
 

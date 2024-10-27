@@ -218,6 +218,7 @@ class BleWebNavigator {
     controller.removeJavaScriptHandler(handlerName: _disconnectGATT);
     controller.removeJavaScriptHandler(handlerName: _getPrimaryServices);
     controller.removeJavaScriptHandler(handlerName: _getCharacteristics);
+    controller.removeJavaScriptHandler(handlerName: _getDevices);
   }
 }
 
