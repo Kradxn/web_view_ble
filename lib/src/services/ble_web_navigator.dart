@@ -136,7 +136,7 @@ class BleWebNavigator {
         callback: (args) async {
           String? deviceID = args.deviceId;
           if (deviceID == null) return {"error": "InvalidArgs"};
-          return await bleService.connect(deviceId: deviceID);
+          return await bleService.connect(deviceId: deviceID,timeout: const Duration(seconds: 1));
         });
 
     // To disconnect
@@ -207,7 +207,7 @@ class BleWebNavigator {
         }
         var deviceId = args.data!['deviceId'];
 
-        await bleService.connect(deviceId: deviceId);
+        await bleService.connect(deviceId: deviceId,timeout: const Duration(seconds: 1));
         return WebBleDevice(deviceId, "N/A");
       },
     );
