@@ -117,6 +117,10 @@
     return await window.flutter_inappwebview.callHandler("getAvailability");
   };
 
+  bluetooth.getDevices = async function () {
+    return await window.flutter_inappwebview.callHandler("getDevices");
+  };
+
   function BluetoothEvent(type, target) {
     wbutils.defineROProperties(this, { type, target, srcElement: target });
   }
