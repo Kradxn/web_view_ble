@@ -17,6 +17,7 @@ class BleWebNavigator {
   static const _getPrimaryServices = 'device:getPrimaryServices';
   static const _getCharacteristics = 'device:getCharacteristics';
   static const _getCharacteristic = 'device:getCharacteristic';
+  static const _getDevices = 'getDevices';
 
   /// Register all Communicators with web view
   static void registerNavigatorBluetooth({
@@ -195,6 +196,13 @@ class BleWebNavigator {
           serviceUUID: serviceUUID,
           deviceID: deviceID,
         );
+      },
+    );
+    // to get decives
+    controller.addJavaScriptHandler(
+      handlerName: _getDevices,
+      callback: (args) async {
+        return await bleService.getDevices();
       },
     );
   }

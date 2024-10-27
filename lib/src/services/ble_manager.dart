@@ -225,6 +225,10 @@ class BleManager {
     return _servicesCache[deviceId] ??
         await UniversalBle.discoverServices(deviceId);
   }
+
+  Future<List<BleDevice>> getDevices() async {
+    return await UniversalBle.getSystemDevices();
+  }
 }
 
 extension _IterableExtension<T> on Iterable<T> {
