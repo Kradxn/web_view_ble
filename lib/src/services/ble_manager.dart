@@ -225,11 +225,6 @@ class BleManager {
     return _servicesCache[deviceId] ??
         await UniversalBle.discoverServices(deviceId);
   }
-
-  Future<List<WebBleDevice>> getDevices() async {
-    List<BleDevice> devices = await UniversalBle.getSystemDevices();
-    return devices.map((e) => WebBleDevice.fromBleDevice(e)).toList();
-  }
 }
 
 extension _IterableExtension<T> on Iterable<T> {

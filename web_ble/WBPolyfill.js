@@ -53,7 +53,7 @@
   };
 
   let bluetooth = {};
-  bluetooth.onavailabilitychanged = function (event) {};
+  bluetooth.onavailabilitychanged = function (event) { };
 
   //EventHandler onavailabilitychanged;
 
@@ -117,8 +117,12 @@
     return await window.flutter_inappwebview.callHandler("getAvailability");
   };
 
-  bluetooth.getDevices = async function () {
-    return await window.flutter_inappwebview.callHandler("getDevices");
+  bluetooth.connectDevice = async function (deviceId) {
+    return native
+      .sendMessage("requestDevice", { data: { deviceId: deviceId } })
+      .then(function (device) {
+        return new wb.BluetoothDevice(device);
+      });
   };
 
   function BluetoothEvent(type, target) {
@@ -249,7 +253,7 @@
       if (chars === undefined) {
         console.log(
           "Unexpected characteristic value notification for device " +
-            `${deviceId} and characteristic ${cid}`
+          `${deviceId} and characteristic ${cid}`
         );
         return;
       }
