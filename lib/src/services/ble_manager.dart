@@ -18,6 +18,8 @@ class BleManager {
   BleManager() {
     _connectionStreamController = StreamController.broadcast();
 
+    UniversalBle.timeout = const Duration(seconds: 1);
+
     UniversalBle.onAvailabilityChange = (AvailabilityState state) {
       if (state == AvailabilityState.poweredOn ||
           state == AvailabilityState.poweredOff) {
