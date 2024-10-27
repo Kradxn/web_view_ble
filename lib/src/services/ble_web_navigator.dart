@@ -202,7 +202,7 @@ class BleWebNavigator {
     controller.addJavaScriptHandler(
       handlerName: _connectDevice,
       callback: (args) async {
-        print(args.deviceId);
+        print(args[0].deviceId);
         return await bleService.connect(deviceId: args.deviceId ?? '');
       },
     );
