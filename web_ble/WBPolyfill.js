@@ -119,7 +119,7 @@
 
   bluetooth.connectDevice = async function (deviceId) {
     return native
-      .sendMessage("connectDevice", {  deviceId: deviceId }) 
+      .sendMessage("connectDevice", { data: { deviceId: deviceId } })
       .then(function (device) {
         return new wb.BluetoothDevice(device);
       });
